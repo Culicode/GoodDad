@@ -1,44 +1,54 @@
 <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
+android:background="#26a69a"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
+    <TextView
+        android:id="@+id/textviewDiem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="59dp"
+        android:layout_weight="1"
+        android:paddingLeft="30px"
+        android:fontFamily="sans-serif"
+        android:text="10"
+        android:textColor="#000000"
+        android:textSize="70px"
+        android:textStyle="bold" />
+
     <ImageView
         android:id="@+id/pop"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="120px"
+        android:layout_height="120px"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="134dp"
-        android:layout_marginTop="101dp"
-        app:srcCompat="@mipmap/ic_launcher_round" />
-
-    <Button
-        android:id="@+id/buttonStop"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:text="Button" />
+        android:layout_marginEnd="142dp"
+        android:layout_marginTop="91dp"
+        android:layout_weight="1"
+        app:srcCompat="@mipmap/ic_launcher" />
 
     <ProgressBar
-        android:layout_marginTop="50px"
         android:id="@+id/progressBarNong"
         style="@android:style/Widget.ProgressBar.Horizontal"
-        android:layout_width="236dp"
+        android:layout_width="331dp"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/imageViewX"
-        android:layout_toLeftOf="@id/buttonStop"
+        android:layout_alignBottom="@+id/imageViewX"
+        android:layout_toEndOf="@+id/imageViewX"
         android:max="100"
-        android:progress="10"
-        />
+        android:progress="10" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:orientation="horizontal"
         android:weightSum="2">
+
 
         <ImageView
             android:id="@+id/Cha"
@@ -61,15 +71,18 @@
             android:layout_weight="1"
             app:srcCompat="@drawable/mother" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+
         android:gravity="center_horizontal"
         android:weightSum="5">
 
         <ImageView
+            android:foreground="@drawable/ripple"
             android:id="@+id/imageView1"
             android:layout_width="150px"
             android:layout_height="150px"
@@ -77,6 +90,7 @@
             app:srcCompat="@mipmap/ic_launcher_round" />
 
         <ImageView
+            android:background="?android:attr/selectableItemBackground"
             android:id="@+id/imageView2"
             android:layout_width="150px"
             android:layout_height="150px"
@@ -86,6 +100,7 @@
 
 
         <ImageView
+            android:background="?android:attr/selectableItemBackground"
             android:id="@+id/imageView3"
             android:layout_width="150px"
             android:layout_height="150px"
@@ -94,6 +109,7 @@
             app:srcCompat="@mipmap/ic_launcher_round" />
 
         <ImageView
+            android:background="?android:attr/selectableItemBackground"
             android:id="@+id/imageView4"
             android:layout_width="150px"
             android:layout_height="150px"
@@ -102,6 +118,7 @@
             app:srcCompat="@mipmap/ic_launcher_round" />
 
         <ImageView
+            android:background="?android:attr/selectableItemBackground"
             android:id="@+id/imageView5"
             android:layout_width="150px"
             android:layout_height="150px"
@@ -110,12 +127,42 @@
             app:srcCompat="@mipmap/ic_launcher_round" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="270px"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:weightSum="3">
+
+        <ImageView
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/sach1"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/open_book" />
+        <ImageView
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/sach2"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/open_book" />
+        <ImageView
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/sach3"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/open_book" />
+    </LinearLayout>
     <ImageView
         android:id="@+id/imageViewX"
         android:layout_width="33dp"
         android:layout_height="29dp"
-        android:layout_alignBottom="@+id/buttonStop"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="45px"
-        app:srcCompat="@mipmap/ic_launcher_round" />
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="19dp"
+        app:srcCompat="@drawable/fire_icon1" />
 </RelativeLayout>
