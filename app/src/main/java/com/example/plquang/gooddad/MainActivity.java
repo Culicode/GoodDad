@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView pop;
     int idpop;
     public static String ket_qua;
+     Animation myAnim;
     ArrayList<String> noidung;
     boolean isplaying;
     Dialog dialog;
@@ -32,8 +33,9 @@ public class MainActivity extends AppCompatActivity {
     ImageView imgCha;
     ImageView img1, img2, img3, img4, img5,sach1,sach2,sach3;
     ProgressBar progressBar;
-    TextView diem;
+    TextView diem, textcountdown;
     int Diem;
+    int cd;
 
     ArrayList<Integer> ViecNha;
     ArrayList<Integer> LuaChon;
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+       myAnim = AnimationUtils.loadAnimation(MainActivity.this, R.anim.bounce);
         noidung=new ArrayList<>();
         noidung.add("Nóng giận khiến bạn dễ xảy ra bạo lực và ngủ ở Sofa");
         noidung.add("Nóng giận khiến bạn mắc các bệnh về gan, tim mạch...");
@@ -62,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         progressBar.setProgress(0);
 
         XuLy();
-
+        startcd();
     sach1.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -95,18 +98,19 @@ sach3.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                final Animation myAnim = AnimationUtils.loadAnimation(MainActivity.this, R.anim.bounce);
+
                img1.startAnimation(myAnim);
                 if (LuaChon.get(0) != idpop) {
                     progressBar.setProgress(progressBar.getProgress() + 10);
                 }
                 else
-                {
+                { progressBar.setProgress(progressBar.getProgress()- 5);
                     Diem++;
                     diem.setText(String.valueOf(Diem));
                 }
                 XuLy();
                 resetcd();
+                myAnim.cancel();
             }
 
         });
@@ -114,17 +118,18 @@ sach3.setOnClickListener(new View.OnClickListener() {
         img2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Animation myAnim = AnimationUtils.loadAnimation(MainActivity.this, R.anim.bounce);
+
                 img2.startAnimation(myAnim);
                 if (LuaChon.get(1) != idpop)
                     progressBar.setProgress(progressBar.getProgress() + 10);
                 else
-                {
+                {progressBar.setProgress(progressBar.getProgress()- 5);
                     Diem++;
                     diem.setText(String.valueOf(Diem));
                 }
                 XuLy();
                 resetcd();
+                myAnim.cancel();
             }
 
         });
@@ -132,17 +137,18 @@ sach3.setOnClickListener(new View.OnClickListener() {
         img3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Animation myAnim = AnimationUtils.loadAnimation(MainActivity.this, R.anim.bounce);
+
                 img3.startAnimation(myAnim);
                 if (LuaChon.get(2) != idpop)
                     progressBar.setProgress(progressBar.getProgress() + 10);
                 else
-                {
+                {progressBar.setProgress(progressBar.getProgress()- 5);
                     Diem++;
                     diem.setText(String.valueOf(Diem));
                 }
                 XuLy();
                 resetcd();
+                myAnim.cancel();
             }
 
         });
@@ -150,17 +156,18 @@ sach3.setOnClickListener(new View.OnClickListener() {
         img4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Animation myAnim = AnimationUtils.loadAnimation(MainActivity.this, R.anim.bounce);
+
                 img4.startAnimation(myAnim);
                 if (LuaChon.get(3) != idpop)
                     progressBar.setProgress(progressBar.getProgress() + 10);
                 else
-                {
+                {progressBar.setProgress(progressBar.getProgress()- 5);
                     Diem++;
                     diem.setText(String.valueOf(Diem));
                 }
                 XuLy();
                 resetcd();
+                myAnim.cancel();
             }
 
         });
@@ -168,30 +175,34 @@ sach3.setOnClickListener(new View.OnClickListener() {
         img5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Animation myAnim = AnimationUtils.loadAnimation(MainActivity.this, R.anim.bounce);
+
                 img5.startAnimation(myAnim);
                 if (LuaChon.get(4) != idpop)
                     progressBar.setProgress(progressBar.getProgress() + 10);
                 else
-                {
+                {progressBar.setProgress(progressBar.getProgress()- 5);
                     Diem++;
                     diem.setText(String.valueOf(Diem));
                 }
                 XuLy();
                 resetcd();
+                myAnim.cancel();
             }
 
         });
-        startcd();
+
     }
 
     public void startcd() {
         countDownTimer.start();
+        cd = 20;
     }
 
     public void resetcd() {
         countDownTimer.cancel();
+
         countDownTimer.start();
+        cd = 20;
     }
 //    public void showDialog() {
 //        dialog = new Dialog(MainActivity.this);
@@ -202,8 +213,8 @@ sach3.setOnClickListener(new View.OnClickListener() {
 
     public void XuLy() {
         int i = 0;
-        if (isplaying == false)
-            return;
+      //  if (isplaying == false)
+      //      return;
         if (progressBar.getProgress() >= 100) {
 
             countDownTimer.cancel();
@@ -216,16 +227,17 @@ sach3.setOnClickListener(new View.OnClickListener() {
             imgCha.setImageResource(R.drawable.father_sad);
             new Handler().postDelayed(new Runnable() {
                 @Override
-                public void run() {}}, 1000);
-            isplaying = false;
-           byExtras();
-         //  Intent intent=new Intent(MainActivity.this,Final.class);
-           // startActivity(intent);
-
+                public void run() {  byExtras();}}, 1500);
             return ;
         }
-
+        img1.setVisibility(View.VISIBLE);
+        img2.setVisibility(View.VISIBLE);
+        img3.setVisibility(View.VISIBLE);
+        img4.setVisibility(View.VISIBLE);
+        img5.setVisibility(View.VISIBLE);
+        pop.setVisibility(View.VISIBLE);
         LuaChon = new ArrayList<>();
+
         while (i < 5) {
             boolean flag = true;
 
@@ -239,6 +251,7 @@ sach3.setOnClickListener(new View.OnClickListener() {
                 LuaChon.add(rd);
                 i++;
             }
+
         }
         Random random = new Random();
         int rd = random.nextInt(5);
@@ -263,7 +276,7 @@ sach3.setOnClickListener(new View.OnClickListener() {
         builder.setNegativeButton("Đóng", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                countDownTimer.start();
+               startcd();
                 XuLy();
                 dialogInterface.dismiss();
             }
@@ -281,7 +294,7 @@ sach3.setOnClickListener(new View.OnClickListener() {
         builder.setNegativeButton("Đóng", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                countDownTimer.start();
+                startcd();
                 XuLy();
                 dialogInterface.dismiss();
             }
@@ -297,6 +310,7 @@ sach3.setOnClickListener(new View.OnClickListener() {
     public void AnhXa() {
         pop = (ImageView) findViewById(R.id.pop);
         progressBar = (ProgressBar) findViewById(R.id.progressBarNong);
+        textcountdown = (TextView) findViewById(R.id.countdown);
         img1 = (ImageView) findViewById(R.id.imageView1);
         img2 = (ImageView) findViewById(R.id.imageView2);
         img3 = (ImageView) findViewById(R.id.imageView3);
@@ -307,26 +321,39 @@ sach3.setOnClickListener(new View.OnClickListener() {
         sach2=(ImageView) findViewById(R.id.sach2);
         sach3=(ImageView) findViewById(R.id.sach3);
         diem=(TextView) findViewById(R.id.textviewDiem);
-        countDownTimer = new CountDownTimer(2500, 200) {
+        countDownTimer = new CountDownTimer(2000, 100) {
             @Override
             public void onTick(long l) {
-
+                if (progressBar.getProgress() >= 100) {
+                    cancel();
+                    textcountdown.setText("");
+                    return;
+                }
+                l = l - 100;
+                textcountdown.setText(String.valueOf(l/1000) +'.'+ String.valueOf((l/100)%10));
             }
 
             @Override
             public void onFinish() {
+                if (progressBar.getProgress() < 100)
+                    startcd();
+                else
+                {
+                    textcountdown.setText("");
+                    return;
+                }
                 progressBar.setProgress(progressBar.getProgress()+10);
                 XuLy();
-                countDownTimer.start();
+
             }
         };
 
     }
 
     public void byExtras(){
-        overridePendingTransition(R.anim.out,R.anim.in);
+        overridePendingTransition(R.anim.out2,R.anim.in2);
 
-          String d=String.valueOf(Diem);
+        String d=String.valueOf(Diem);
         Intent intent2 = new Intent(MainActivity.this,Final.class);
         intent2.putExtra("ketqua",d);
         startActivity(intent2);

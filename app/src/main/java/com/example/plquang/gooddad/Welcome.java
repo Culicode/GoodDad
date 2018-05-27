@@ -17,37 +17,27 @@ ImageView imglogo,imgStart;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         AnhXa();
-        Animation animation_fade= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade);
-        imglogo.startAnimation(animation_fade);
-       Animation animation_rolate=AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rolate);
-       imgStart.startAnimation(animation_rolate);
+
+      Animation animation= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade);
+       imglogo.startAnimation(animation);
+       animation=AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rolate);
+      imgStart.startAnimation(animation);
+       animation.cancel();
        imgStart.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               final Animation myAnim = AnimationUtils.loadAnimation(Welcome.this, R.anim.bounce);
-               imgStart.startAnimation(myAnim);
+
+
+
                Intent intent=new Intent(Welcome.this,MainActivity.class);
                startActivity(intent);
                overridePendingTransition(R.anim.out,R.anim.in);
-
                finish();
+
            }
        });
     }
-    class MyBounceInterpolator implements android.view.animation.Interpolator {
-        private double mAmplitude = 1;
-        private double mFrequency = 10;
 
-        MyBounceInterpolator(double amplitude, double frequency) {
-            mAmplitude = amplitude;
-            mFrequency = frequency;
-        }
-
-        public float getInterpolation(float time) {
-            return (float) (-1 * Math.pow(Math.E, -time/ mAmplitude) *
-                    Math.cos(mFrequency * time) + 1);
-        }
-    }
     public void AnhXa()
     {
         imglogo=(ImageView) findViewById(R.id.imageLogo);

@@ -32,7 +32,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="225dp"
         android:text="Good Daddy! "
-        android:textSize="50px"
+        android:textStyle="bold"
+        android:textSize="100px"
         android:textColor="#fff"
         />
 </RelativeLayout>
